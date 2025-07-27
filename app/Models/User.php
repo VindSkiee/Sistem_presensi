@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $fillable = ['name', 'email', 'password', 'role'];
+    protected $fillable = ['name', 'email', 'password', 'role', 'admin_id'];
     protected $hidden = ['password', 'remember_token'];
 
     public function isAdmin()
@@ -25,5 +25,26 @@ class User extends Authenticatable
     public function person()
     {
         return $this->hasOne(Person::class);
+    }
+
+    public function schedules()
+    {
+        return $this->belongsToMany(Schedule::class);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'admin_id');
+    }
+
+    // User -> dimiliki oleh satu admin
+    public function admin()
+    {
+        return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function hasRole($role): bool
+    {
+        return $this->role === $role;
     }
 }

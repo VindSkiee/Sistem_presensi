@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('schedule_id')->constrained();
-            $table->foreignId('person_id')->constrained('persons');
-            $table->foreignId('user_id')->constrained()->nullable();
+            $table->foreignId('person_id')->constrained('persons')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->enum('status', ['hadir', 'alpa', 'tidak_valid'])->default('alpa');
             $table->text('description')->nullable();
             $table->boolean('is_validated')->default(false);

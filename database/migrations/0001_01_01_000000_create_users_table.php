@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('role', ['admin', 'user'])->default('user');
-            $table->rememberToken();
+            $table->foreignId('admin_id')->nullable()->constrained('users')->nullOnDelete(); // lebih clean dan aman
             $table->timestamps();
         });
 

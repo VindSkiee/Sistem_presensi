@@ -30,7 +30,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/schedules/{schedule}/edit', [ScheduleController::class, 'edit'])->name('admin.schedules.edit');
     Route::put('/schedules/{schedule}', [ScheduleController::class, 'update'])->name('admin.schedules.update');
     Route::delete('/schedules/{schedule}', [ScheduleController::class, 'destroy'])->name('admin.schedules.destroy');
-    Route::post('/schedules/generate-weekly', [ScheduleController::class, 'generateWeekly'])->name('admin.schedules.generate');
+    Route::get('/validate-previous', [ScheduleController::class, 'showUnvalidatedSchedules'])->name('admin.validate.previous');
+    Route::put('/validate-previous/{schedule}', [ScheduleController::class, 'updateUnvalidated'])->name('admin.validate.update');
+    Route::get('/admin/generate-weekly', [ScheduleController::class, 'showGenerateWeeklyForm'])->name('admin.generate.weekly.form');
+    Route::post('/admin/generate-weekly', [ScheduleController::class, 'generateWeekly'])->name('admin.generate.weekly');
 
     // Person Routes
     Route::get('/persons', [PersonController::class, 'index'])->name('admin.persons.index');
@@ -42,6 +45,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // Attendance History
     Route::get('/attendances/history', [AttendanceController::class, 'history'])->name('admin.attendances.history');
+
+    
 });
 
 // Redirect root to appropriate dashboard

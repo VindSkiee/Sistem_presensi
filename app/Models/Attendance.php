@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
 {
+    const STATUS_PRESENT     = 'present';
+    const STATUS_ALPA        = 'alpa';
+
     protected $table = 'attendances';
     
-    protected $fillable = ['schedule_id', 'person_id', 'user_id', 'status', 'description', 'is_validated'];
+    protected $fillable = ['schedule_id', 'person_id', 'user_id', 'status', 'description', 'is_validated', 'admin_id'];
 
     public function schedule()
     {

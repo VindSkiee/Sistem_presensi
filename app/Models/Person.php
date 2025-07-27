@@ -8,7 +8,7 @@ class Person extends Model
 {
     protected $table = 'persons';
 
-    protected $fillable = ['name', 'email', 'password', 'phone'];
+    protected $fillable = ['name', 'email', 'password', 'phone', 'user_id'];
 
     public function schedules()
     {
