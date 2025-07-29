@@ -58,42 +58,57 @@ class AdminController extends Controller
         ]);
 
         $admin = Auth::user();
-        $adminUserIds = $admin->users()->pluck('id'); // user bawahan dari admin ini
-        $adminPersonIds = Person::whereIn('user_id', $adminUserIds)->pluck('id')->toArray(); // ambil semua person milik user bawahan
+        $adminUserIds = $admin->users()->pluck('id');
+        $adminPersonIds = Person::whereIn('user_id', $adminUserIds)->pluck('id')->toArray();
 
-        Log::info('Mulai proses validasi absensi', ['schedule_id' => $request->schedule_id, 'admin_id' => $admin->id]);
+        Log::info('Mulai proses validasi absensi', [
+            'schedule_id' => $request->schedule_id,
+            'admin_id' => $admin->id
+        ]);
+
+        $schedule = Schedule::findOrFail($request->schedule_id);
+
+        // Jika schedule sudah divalidasi, kembalikan error
+        if ($schedule->is_validated) {
+            return back()->with('error', 'Jadwal ini sudah terkunci dan tidak dapat diubah.');
+        }
+
+        $validatedAny = false;
 
         foreach ($request->attendances as $attendanceData) {
+            // Hanya proses jika is_validated true (checkbox dicentang)
+            if (!isset($attendanceData['is_validated']) || $attendanceData['is_validated'] != '1') {
+                continue;
+            }
+
             $attendance = Attendance::with('person')->find($attendanceData['id']);
 
-            // Cek apakah attendance milik person yang berada di bawah admin ini
-            if ($attendance && in_array($attendance->person_id, $adminPersonIds) && !$attendance->is_validated) {
+            // ✅ Perbaikan: Tambahkan kurung tutup di akhir in_array
+            if ($attendance && in_array($attendance->person_id, $adminPersonIds)) {
                 $attendance->update([
                     'status' => $attendanceData['status'],
                     'is_validated' => true,
                 ]);
+                $validatedAny = true;
 
                 Log::info('Attendance diperbarui', [
                     'id' => $attendance->id,
                     'status' => $attendanceData['status'],
                     'person_id' => $attendance->person_id
                 ]);
-            } else {
-                Log::warning('Attendance tidak valid untuk admin ini', [
-                    'attendance_id' => $attendanceData['id'] ?? null,
-                    'person_id' => $attendance->person_id ?? null
-                ]);
             }
         }
 
-        $schedule = Schedule::find($request->schedule_id);
-        if ($schedule) {
+        // Jika ada minimal satu yang divalidasi, lock seluruh schedule
+        if ($validatedAny) {
             $schedule->update([
                 'is_validated' => true,
+                'validated_at' => now(),
             ]);
-            Log::info('Schedule divalidasi dan dikunci', ['schedule_id' => $schedule->id]);
+
+            Log::info('Schedule terkunci setelah validasi parsial', ['schedule_id' => $schedule->id]);
         }
 
-        return back()->with('success', 'Absensi berhasil divalidasi dan dikunci.');
+        return back()->with('success', 'Absensi berhasil divalidasi dan jadwal terkunci.');
     }
 }

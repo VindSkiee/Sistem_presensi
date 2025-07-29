@@ -3,8 +3,14 @@
 
 @section('content')
     <div class="py-6">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6">History Presensi</h1>
-
+        <div class="flex items-center mb-3">
+            <a href="{{ route('admin.dashboard') }}" class="mr-4 text-gray-600 hover:text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </a>
+            <h1 class="text-2xl font-bold text-gray-800">History Presensi</h1>
+        </div>
         <div class="bg-white shadow rounded-lg p-6 mb-6">
             <form method="GET" action="{{ route('admin.attendances.history') }}"
                 class="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -104,8 +110,8 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                            {{ $attendance->is_validated ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
-                                                {{ $attendance->is_validated ? 'Valid' : 'Belum divalidasi' }}
+                                            {{ $attendance->is_validated ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                                {{ $attendance->is_validated ? 'Valid' : 'Tidak Valid' }}
                                             </span>
                                         </td>
                                     </tr>

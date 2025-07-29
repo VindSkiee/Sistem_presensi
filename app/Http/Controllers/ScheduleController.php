@@ -15,11 +15,14 @@ class ScheduleController extends Controller
     public function index()
     {
         $admin = auth()->user();
-        $schedules = Schedule::with('persons')
+
+        // Get schedules with count of persons
+        $schedules = Schedule::withCount('persons')
             ->where('admin_id', $admin->id)
             ->orderBy('date', 'desc')
             ->paginate(10);
 
+        // Get all persons under this admin (if needed for other functionality)
         $persons = Person::whereIn('user_id', $admin->users->pluck('id'))->get();
 
         return view('admin.schedules.index', compact('schedules', 'persons'));
@@ -81,55 +84,60 @@ class ScheduleController extends Controller
     public function edit(Schedule $schedule)
     {
         $admin = auth()->user();
-        if ($schedule->admin_id !== $admin->id) {
-            abort(403, 'Anda tidak berhak mengedit jadwal ini.');
-        }
 
-        $persons = Person::whereIn('user_id', $admin->users->pluck('id'))->get();
+        // Authorization
+        abort_if($schedule->admin_id !== $admin->id, 403, 'Unauthorized action.');
+
+        // Get persons with their attendance status for this schedule
+        $persons = Person::whereIn('user_id', $admin->users->pluck('id'))
+            ->with(['attendances' => function ($query) use ($schedule) {
+                $query->where('schedule_id', $schedule->id);
+            }])
+            ->orderBy('name')
+            ->get();
+
         return view('admin.schedules.edit', compact('schedule', 'persons'));
     }
 
-
     public function update(Request $request, Schedule $schedule)
     {
-        if ($schedule->admin_id !== auth()->id()) {
-            abort(403);
-        }
+        $admin = auth()->user();
+        abort_if($schedule->admin_id !== $admin->id, 403, 'Unauthorized action.');
 
-        $request->validate([
-            'date' => 'required|date|unique:schedules,date,' . $schedule->id,
-            'persons' => 'required|array',
-            'persons.*' => 'exists:persons,id',
+        $validated = $request->validate([
+            'date' => 'required|date',
+            'attendances' => 'required|array',
+            'attendances.*.person_id' => 'required|exists:persons,id',
+            'attendances.*.status' => 'required|in:present,alpa',
+            // Remove the 'sometimes' rule as we always want this field
+            'attendances.*.is_validated' => 'required|boolean'
         ]);
 
-        $schedule->update([
-            'date' => $request->date,
-            'day_name' => Carbon::parse($request->date)->isoFormat('dddd'),
-        ]);
-
-        $schedule->persons()->sync($request->persons);
-
-        // Sync attendance records
-        $existingPersonIds = $schedule->attendances->pluck('person_id')->toArray();
-        $newPersonIds = $request->persons;
-
-        // Remove attendances for removed persons
-        $toRemove = array_diff($existingPersonIds, $newPersonIds);
-        Attendance::where('schedule_id', $schedule->id)
-            ->whereIn('person_id', $toRemove)
-            ->delete();
-
-        // Add attendances for new persons
-        $toAdd = array_diff($newPersonIds, $existingPersonIds);
-        foreach ($toAdd as $personId) {
-            Attendance::create([
-                'schedule_id' => $schedule->id,
-                'person_id' => $personId,
-                'status' => 'alpa',
+        DB::transaction(function () use ($schedule, $validated) {
+            // Update schedule date
+            $schedule->update([
+                'date' => Carbon::parse($validated['date']),
+                'day_name' => Carbon::parse($validated['date'])->isoFormat('dddd')
             ]);
-        }
 
-        return redirect()->route('admin.schedules.index')->with('success', 'Schedule updated successfully');
+            // Update attendances
+            foreach ($validated['attendances'] as $attendanceData) {
+                $attendance = $schedule->attendances()
+                    ->firstOrNew(['person_id' => $attendanceData['person_id']]);
+
+                $attendance->fill([
+                    'status' => $attendanceData['status'],
+                    'is_validated' => $attendanceData['is_validated'] // Always use the submitted value
+                ])->save();
+            }
+
+            // Update overall schedule validation status
+            $allValidated = $schedule->attendances()->where('is_validated', false)->doesntExist();
+            $schedule->update(['is_validated' => $allValidated]);
+        });
+
+        return redirect()->route('admin.schedules.index')
+            ->with('success', 'Jadwal berhasil diperbarui');
     }
 
     public function destroy(Schedule $schedule)
