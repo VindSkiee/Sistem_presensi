@@ -2,7 +2,14 @@
 
 @section('content')
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
-        <h2 class="text-xl font-bold mb-6">Validasi Presensi - Tanggal Sebelumnya</h2>
+        <div class="flex items-center mb-3">
+            <a href="{{ route('admin.dashboard') }}" class="mr-4 text-gray-600 hover:text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </a>
+            <h1 class="text-2xl font-bold text-gray-800">Validasi Presensi - Tanggal Sebelumnya</h1>
+        </div>
 
         @foreach ($schedules as $schedule)
             <form action="{{ route('admin.validate.update', $schedule->id) }}" method="POST" class="mb-10">
