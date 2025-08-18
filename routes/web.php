@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -16,6 +17,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::post('/user/attendance', [UserController::class, 'submitAttendance'])->name('user.attendance.submit');
+    // routes/web.php
+    Route::post('/schedules/{id}/upload-photo', [userController::class, 'uploadPhoto'])
+        ->name('user.schedules.uploadPhoto');
 });
 
 // Admin Routes
@@ -45,8 +49,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // Attendance History
     Route::get('/attendances/history', [AttendanceController::class, 'history'])->name('admin.attendances.history');
-
-    
 });
 
 // Redirect root to appropriate dashboard

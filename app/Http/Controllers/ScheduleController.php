@@ -88,8 +88,11 @@ class ScheduleController extends Controller
         // Authorization
         abort_if($schedule->admin_id !== $admin->id, 403, 'Unauthorized action.');
 
-        // Get persons with their attendance status for this schedule
+        // Ambil orang-orang yang memang terdaftar di jadwal ini
         $persons = Person::whereIn('user_id', $admin->users->pluck('id'))
+            ->whereHas('attendances', function ($query) use ($schedule) {
+                $query->where('schedule_id', $schedule->id);
+            })
             ->with(['attendances' => function ($query) use ($schedule) {
                 $query->where('schedule_id', $schedule->id);
             }])
@@ -176,7 +179,19 @@ class ScheduleController extends Controller
         Log::info('Orang yang dipilih: ', $personIds);
 
         $lastSchedule = Schedule::orderBy('date', 'desc')->first();
-        $startDate = $lastSchedule ? Carbon::parse($lastSchedule->date)->addDay() : now();
+        $today = Carbon::today();
+
+        if ($lastSchedule) {
+            $lastScheduleDate = Carbon::parse($lastSchedule->date);
+
+            if ($lastScheduleDate->gte($today)) {
+                $startDate = $lastScheduleDate->copy()->addDay();
+            } else {
+                $startDate = $today;
+            }
+        } else {
+            $startDate = $today;
+        }
         Log::info('Tanggal mulai generate jadwal: ' . $startDate->toDateString());
 
         $admin = auth()->user();

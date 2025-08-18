@@ -43,15 +43,12 @@ class UserController extends Controller
 
     public function submitAttendance(Request $request)
     {
-        Log::info('Submit start', $request->all());
-
         $request->validate([
             'schedule_id' => 'required|exists:schedules,id',
             'person_id' => 'required|exists:persons,id',
             'status' => 'required|in:present,alpa',
             'description' => $request->status === 'alpa' ? 'required|string' : 'nullable|string',
         ]);
-        Log::info('Validation passed');
 
         $userId = Auth::id();
 
@@ -66,8 +63,31 @@ class UserController extends Controller
                 'description' => $request->status === 'alpa' ? $request->description : null,
             ]
         );
-        Log::info('Attendance updated/created', ['attendance' => $attendance]);
 
         return back()->with('success', 'Attendance submitted successfully');
+    }
+
+    public function uploadPhoto(Request $request, $scheduleId)
+    {
+        $schedule = Schedule::findOrFail($scheduleId);
+
+        // Jika sudah ada foto, hentikan
+        if ($schedule->photo) {
+            return back()->with('error', 'Foto sudah diupload untuk jadwal ini.');
+        }
+
+        // Validasi
+        $request->validate([
+            'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        // Simpan foto ke storage
+        $path = $request->file('photo')->store('schedules', 'public');
+
+        // Update kolom photo di schedules
+        $schedule->photo = $path;
+        $schedule->save();
+
+        return back()->with('success', 'Foto berhasil diupload.');
     }
 }

@@ -8,7 +8,7 @@ class Schedule extends Model
 {
     protected $table = 'schedules';
 
-    protected $fillable = ['date', 'day_name', 'is_validated', 'admin_id'];
+    protected $fillable = ['date', 'day_name', 'is_validated', 'admin_id', 'photo'];
 
     public function persons()
     {
@@ -30,4 +30,5 @@ class Schedule extends Model
     {
         return $this->belongsTo(User::class, 'admin_id');
     }
+    
 }

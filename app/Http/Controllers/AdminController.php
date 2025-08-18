@@ -8,6 +8,7 @@ use App\Models\Attendance;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Person;
 
 class AdminController extends Controller
@@ -15,7 +16,17 @@ class AdminController extends Controller
     public function dashboard()
     {
         $today = Carbon::today();
-        $adminId = Auth::id(); // ID admin saat ini
+        $adminId = Auth::id();
+
+        // Hapus foto schedule yang sudah lewat
+        $oldSchedules = Schedule::whereDate('date', '<', $today)->get();
+        foreach ($oldSchedules as $oldSchedule) {
+            if ($oldSchedule->photo && Storage::exists($oldSchedule->photo)) {
+                Storage::delete($oldSchedule->photo);
+            }
+            $oldSchedule->photo = null;
+            $oldSchedule->save();
+        }
 
         // Ambil schedule hari ini dengan persons milik admin yang sedang login
         $schedule = Schedule::whereDate('date', $today)
@@ -46,7 +57,6 @@ class AdminController extends Controller
 
         return view('admin.dashboard', compact('schedule', 'unvalidatedSchedules'));
     }
-
 
     public function validateAttendance(Request $request)
     {
