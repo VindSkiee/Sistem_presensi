@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function dashboard()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $today = Carbon::today();
         $schedule = null;
 

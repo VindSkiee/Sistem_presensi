@@ -260,15 +260,8 @@
                         </div>
                     </form>
                 @else
-                    <p class="text-gray-600">Tidak ada jadwal untuk hari ini.</p>
-                    <div class="mt-4">
-                        <form action="{{ route('admin.generate.weekly.form') }}" method="GET">
-                            <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
-                                Generate Jadwal Mingguan
-                            </button>
-                        </form>
-                    </div>
+                    <p class="text-gray-600">Tidak ada jadwal untuk hari ini, silakan buat jadwal baru di menu <b>Kelola Jadwal</b>.</p>
+
                 @endif
             </div>
 

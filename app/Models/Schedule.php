@@ -12,8 +12,9 @@ class Schedule extends Model
 
     public function persons()
     {
-        return $this->belongsToMany(Person::class, 'schedule_person');
+        return $this->belongsToMany(Person::class, 'schedule_person', 'schedule_id', 'person_id');
     }
+
 
 
     public function attendances()
@@ -30,5 +31,4 @@ class Schedule extends Model
     {
         return $this->belongsTo(User::class, 'admin_id');
     }
-    
 }

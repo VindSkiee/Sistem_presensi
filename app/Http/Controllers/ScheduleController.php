@@ -178,25 +178,26 @@ class ScheduleController extends Controller
 
         Log::info('Orang yang dipilih: ', $personIds);
 
-        $lastSchedule = Schedule::orderBy('date', 'desc')->first();
+        $admin = auth()->user();
+        $adminId = $admin && $admin->hasRole('admin') ? $admin->id : null;
+
+        // Ambil jadwal terakhir untuk admin ini saja
+        $lastSchedule = Schedule::where('admin_id', $adminId)
+            ->orderBy('date', 'desc')
+            ->first();
+
         $today = Carbon::today();
 
         if ($lastSchedule) {
             $lastScheduleDate = Carbon::parse($lastSchedule->date);
-
-            if ($lastScheduleDate->gte($today)) {
-                $startDate = $lastScheduleDate->copy()->addDay();
-            } else {
-                $startDate = $today;
-            }
+            $startDate = $lastScheduleDate->copy()->addDay();
         } else {
             $startDate = $today;
         }
+
         Log::info('Tanggal mulai generate jadwal: ' . $startDate->toDateString());
 
-        $admin = auth()->user();
-        $adminId = $admin && $admin->hasRole('admin') ? $admin->id : null;
-
+        // Buat jadwal 7 hari ke depan
         for ($i = 0; $i < 7; $i++) {
             $date = $startDate->copy()->addDays($i);
             $dayName = $date->locale('id')->translatedFormat('l');
@@ -204,8 +205,9 @@ class ScheduleController extends Controller
             $schedule = Schedule::create([
                 'date' => $date,
                 'day_name' => $dayName,
-                'admin_id' => $adminId, // <- Tambahkan ini
+                'admin_id' => $adminId,
             ]);
+
             Log::info("Membuat schedule untuk tanggal {$date->toDateString()} dengan ID: {$schedule->id}");
 
             foreach ($personIds as $personId) {
@@ -227,8 +229,6 @@ class ScheduleController extends Controller
 
         return redirect()->back()->with('success', 'Jadwal mingguan berhasil dibuat.');
     }
-
-
 
     public function showUnvalidatedSchedules()
     {

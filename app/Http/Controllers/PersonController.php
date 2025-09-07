@@ -65,11 +65,11 @@ class PersonController extends Controller
 
             DB::commit();
 
-            return redirect()->route('admin.persons.index')->with('success', 'Person and user account created successfully');
+            return redirect()->route('admin.persons.index')->with('success', 'Akun user berhasil dibuat');
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Error creating person and user: ' . $e->getMessage());
-            return back()->with('error', 'Failed to create person and user: ' . $e->getMessage());
+            return back()->with('error', 'Gagal membuat user: ' . $e->getMessage());
         }
     }
 
@@ -98,7 +98,7 @@ class PersonController extends Controller
 
         $person->update($request->only(['name', 'email', 'phone']));
 
-        return redirect()->route('admin.persons.index')->with('success', 'Person updated successfully');
+        return redirect()->route('admin.persons.index')->with('success', 'Akun user berhasil diperbarui');
     }
 
     public function destroy(Person $person)
@@ -116,6 +116,6 @@ class PersonController extends Controller
 
         $person->delete();
 
-        return back()->with('success', 'Person deleted successfully');
+        return back()->with('success', 'Akun user berhasil dihapus');
     }
 }

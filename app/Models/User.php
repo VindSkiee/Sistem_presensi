@@ -28,9 +28,10 @@ class User extends Authenticatable
     }
 
     public function schedules()
-    {
-        return $this->belongsToMany(Schedule::class);
-    }
+{
+    return $this->belongsToMany(Schedule::class, 'schedule_person', 'user_id', 'schedule_id');
+}
+
 
     public function users()
     {

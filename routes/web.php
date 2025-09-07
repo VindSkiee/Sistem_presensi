@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\SuperAdminController;
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -18,7 +19,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::post('/user/attendance', [UserController::class, 'submitAttendance'])->name('user.attendance.submit');
     // routes/web.php
-    Route::post('/schedules/{id}/upload-photo', [userController::class, 'uploadPhoto'])
+    Route::post('/schedules/{id}/upload-photo', [UserController::class, 'uploadPhoto'])
         ->name('user.schedules.uploadPhoto');
 });
 
@@ -36,8 +37,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::delete('/schedules/{schedule}', [ScheduleController::class, 'destroy'])->name('admin.schedules.destroy');
     Route::get('/validate-previous', [ScheduleController::class, 'showUnvalidatedSchedules'])->name('admin.validate.previous');
     Route::put('/validate-previous/{schedule}', [ScheduleController::class, 'updateUnvalidated'])->name('admin.validate.update');
-    Route::get('/admin/generate-weekly', [ScheduleController::class, 'showGenerateWeeklyForm'])->name('admin.generate.weekly.form');
-    Route::post('/admin/generate-weekly', [ScheduleController::class, 'generateWeekly'])->name('admin.generate.weekly');
+    Route::get('/generate-weekly', [ScheduleController::class, 'showGenerateWeeklyForm'])->name('admin.generate.weekly.form');
+    Route::post('/generate-weekly', [ScheduleController::class, 'generateWeekly'])->name('admin.generate.weekly');
 
     // Person Routes
     Route::get('/persons', [PersonController::class, 'index'])->name('admin.persons.index');
@@ -49,6 +50,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // Attendance History
     Route::get('/attendances/history', [AttendanceController::class, 'history'])->name('admin.attendances.history');
+});
+
+Route::middleware(['auth', 'super_admin'])->prefix('super-admin')->group(function () {
+    Route::get('/dashboard', [SuperAdminController::class, 'index'])->name('superadmin.dashboard');
 });
 
 // Redirect root to appropriate dashboard

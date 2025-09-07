@@ -12,7 +12,7 @@ class Person extends Model
 
     public function schedules()
     {
-        return $this->belongsToMany(Schedule::class, 'schedule_person');
+        return $this->belongsToMany(Schedule::class, 'schedule_person', 'person_id', 'schedule_id');
     }
 
     public function attendances()
