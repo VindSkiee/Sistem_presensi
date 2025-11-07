@@ -315,7 +315,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <a href="{{ route('admin.persons.index') }}"
                     class="bg-blue-100 hover:bg-blue-200 p-4 rounded-lg text-center transition-colors">
-                    <h3 class="font-medium text-blue-800">Tambah Orang</h3>
+                    <h3 class="font-medium text-blue-800">Tambah User</h3>
                     <p class="text-sm text-blue-600 mt-1">Kelola daftar orang</p>
                 </a>
 
@@ -327,8 +327,8 @@
 
                 <a href="{{ route('admin.attendances.history') }}"
                     class="bg-purple-100 hover:bg-purple-200 p-4 rounded-lg text-center transition-colors">
-                    <h3 class="font-medium text-purple-800">History Presensi</h3>
-                    <p class="text-sm text-purple-600 mt-1">Lihat data historis</p>
+                    <h3 class="font-medium text-purple-800">Lihat History</h3>
+                    <p class="text-sm text-purple-600 mt-1">Lihat data historis absensi</p>
                 </a>
             </div>
         </div>
