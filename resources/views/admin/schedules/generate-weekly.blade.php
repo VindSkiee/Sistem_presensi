@@ -42,7 +42,7 @@
                 <button type="submit" 
                         class="w-full sm:w-auto px-6 py-2 bg-blue-600 hover:bg-blue-700 
                                text-white text-sm font-semibold rounded-lg shadow transition">
-                    Generate Jadwal Mingguan
+                    Simpan
                 </button>
             </form>
         </div>
