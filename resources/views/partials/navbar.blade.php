@@ -12,9 +12,9 @@
                     </div>
                     <div>
                         <span class="text-2xl font-bold bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">
-                            Presensi System
+                            Presensi Sistem
                         </span>
-                        <div class="text-xs text-slate-400 font-medium">Management Platform</div>
+                        <div class="text-xs text-slate-400 font-medium">Platform Manajemen</div>
                     </div>
                 </div>
             </div>

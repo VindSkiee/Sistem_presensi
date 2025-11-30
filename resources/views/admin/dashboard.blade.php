@@ -34,16 +34,23 @@
                         <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-2">
-                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                        </path>
                                     </svg>
                                     <span class="text-sm font-medium text-blue-800">Foto Jadwal Tersedia</span>
                                 </div>
-                                <button onclick="openPhotoModal('{{ asset('storage/' . $schedule->photo) }}', 'Foto Jadwal {{ $schedule->day_name }}, {{ $schedule->date }}')"
-                                        class="inline-flex items-center px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm">
+                                <button
+                                    onclick="openPhotoModal('{{ asset('storage/' . $schedule->photo) }}', 'Foto Jadwal {{ $schedule->day_name }}, {{ $schedule->date }}')"
+                                    class="inline-flex items-center px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                        </path>
                                     </svg>
                                     Lihat Foto
                                 </button>
@@ -131,8 +138,11 @@
                             <div class="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                            </path>
                                         </svg>
                                         <div>
                                             <span class="text-sm font-medium text-green-800">Foto Jadwal Tersedia</span>
@@ -140,19 +150,26 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center space-x-2">
-                                        <button type="button" onclick="openPhotoModal('{{ asset('storage/' . $schedule->photo) }}', 'Foto Jadwal {{ $schedule->day_name }}, {{ $schedule->date }}')"
-                                                class="inline-flex items-center px-4 py-2 text-sm bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors shadow-sm">
-                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                        <button type="button"
+                                            onclick="openPhotoModal('{{ asset('storage/' . $schedule->photo) }}', 'Foto Jadwal {{ $schedule->day_name }}, {{ $schedule->date }}')"
+                                            class="inline-flex items-center px-4 py-2 text-sm bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors shadow-sm">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                </path>
                                             </svg>
                                             Lihat Foto
                                         </button>
-                                        <a href="{{ asset('storage/' . $schedule->photo) }}" 
-                                           download="jadwal_{{ $schedule->date }}.jpg"
-                                           class="inline-flex items-center px-2 py-1.5 text-sm bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors">
+                                        <a href="{{ asset('storage/' . $schedule->photo) }}"
+                                            download="jadwal_{{ $schedule->date }}.jpg"
+                                            class="inline-flex items-center px-2 py-1.5 text-sm bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                                </path>
                                             </svg>
                                         </a>
                                     </div>
@@ -161,8 +178,11 @@
                         @else
                             <div class="mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg">
                                 <div class="flex items-center space-x-2">
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                        </path>
                                     </svg>
                                     <div>
                                         <span class="text-sm font-medium text-gray-600">Belum ada foto diupload</span>
@@ -234,7 +254,8 @@
                                                         class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded attendance-checkbox">
                                                     <input type="hidden" name="attendances[{{ $attendance->id }}][id]"
                                                         value="{{ $attendance->id }}">
-                                                    <input type="hidden" name="attendances[{{ $attendance->id }}][status]"
+                                                    <input type="hidden"
+                                                        name="attendances[{{ $attendance->id }}][status]"
                                                         value="{{ $attendance->status }}">
                                                 @else
                                                     <span class="text-green-500">✓ Valid</span>
@@ -260,8 +281,8 @@
                         </div>
                     </form>
                 @else
-                    <p class="text-gray-600">Tidak ada jadwal untuk hari ini, silakan buat jadwal baru di menu <b>Kelola Jadwal</b>.</p>
-
+                    <p class="text-gray-600">Tidak ada jadwal untuk hari ini, silakan buat jadwal baru di menu <b>Kelola
+                            Jadwal</b>.</p>
                 @endif
             </div>
 
@@ -315,7 +336,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <a href="{{ route('admin.persons.index') }}"
                     class="bg-blue-100 hover:bg-blue-200 p-4 rounded-lg text-center transition-colors">
-                    <h3 class="font-medium text-blue-800">Tambah User</h3>
+                    <h3 class="font-medium text-blue-800">Kelola User</h3>
                     <p class="text-sm text-blue-600 mt-1">Kelola daftar orang</p>
                 </a>
 
@@ -335,21 +356,20 @@
     </div>
 
     <!-- Modal untuk menampilkan foto dalam ukuran penuh -->
-    <div id="photoModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-90" 
-         onclick="closePhotoModal()">
+    <div id="photoModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-90" onclick="closePhotoModal()">
         <div class="absolute inset-0 flex flex-col">
             <!-- Header dengan tombol close dan navigasi -->
             <div class="flex justify-between items-center p-4 text-white bg-black bg-opacity-50">
                 <div id="modalTitle" class="text-lg font-medium truncate max-w-md"></div>
-                <button onclick="closePhotoModal()" 
-                        class="p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-colors"
-                        title="Tutup">
+                <button onclick="closePhotoModal()"
+                    class="p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-colors" title="Tutup">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
                     </svg>
                 </button>
             </div>
-            
+
             <!-- Container foto dengan responsive sizing -->
             <div class="flex-grow flex items-center justify-center p-4">
                 <div class="relative w-full h-full flex items-center justify-center">
@@ -358,544 +378,473 @@
                         <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-white"></div>
                         <span class="ml-3 text-white text-lg">Memuat foto...</span>
                     </div>
-                    
+
                     <!-- Zoom indicator -->
                     <div id="zoomIndicator" class="zoom-indicator hidden">
                         <span id="zoomLevel">100%</span>
                     </div>
-                    
+
                     <!-- Foto dalam modal dengan responsive sizing -->
-                    <img id="modalImage" src="" alt="" 
-                         class="max-w-full max-h-full object-contain rounded-lg shadow-2xl hidden transition-all duration-300"
-                         onclick="event.stopPropagation()"
-                         onload="hideLoader()"
-                         onerror="showError()"
-                         style="max-width: 95vw; max-height: 85vh; width: auto; height: auto;">
-                    
+                    <img id="modalImage" src="" alt=""
+                        class="max-w-full max-h-full object-contain rounded-lg shadow-2xl hidden transition-all duration-300"
+                        onclick="event.stopPropagation()" onload="hideLoader()" onerror="showError()"
+                        style="max-width: 95vw; max-height: 85vh; width: auto; height: auto;">
+
                     <!-- Error state -->
                     <div id="imageError" class="hidden text-white text-center">
-                        <svg class="w-20 h-20 mx-auto mb-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <svg class="w-20 h-20 mx-auto mb-4 text-red-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         <p class="text-lg">Foto tidak dapat dimuat</p>
                         <p class="text-sm text-gray-300 mt-2">Pastikan file foto tersedia dan dapat diakses</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Footer dengan caption dan tombol aksi -->
-            <div id="modalCaption" class="bg-black bg-opacity-50 text-white p-4 text-center hidden">
-                <p class="text-sm mb-3"></p>
-                <div class="flex justify-center space-x-4">
-                    <button id="downloadBtn" 
-                            class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md transition-colors">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                        Download Foto
-                    </button>
-                    <button onclick="zoomIn()" 
-                            class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm rounded-md transition-colors"
-                            title="Perbesar">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                        Perbesar
-                    </button>
-                    <button onclick="zoomOut()" 
-                            class="inline-flex items-center px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white text-sm rounded-md transition-colors"
-                            title="Perkecil">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7"></path>
-                        </svg>
-                        Perkecil
-                    </button>
-                    <button onclick="resetZoom()" 
-                            class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white text-sm rounded-md transition-colors"
-                            title="Reset Zoom">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                        </svg>
-                        Reset
-                    </button>
+
+            <div id="photoModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-90" onclick="closePhotoModal()">
+                <div class="absolute inset-0 flex flex-col">
+                    <!-- Header dengan tombol close -->
+                    <div class="flex justify-between items-center p-4 text-white bg-black bg-opacity-50">
+                        <div id="modalTitle" class="text-lg font-medium truncate max-w-md"></div>
+                        <button onclick="closePhotoModal()"
+                            class="p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-colors" title="Tutup">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Container foto dengan responsive sizing -->
+                    <div class="flex-grow flex items-center justify-center p-4">
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <!-- Loading placeholder -->
+                            <div id="imageLoader" class="flex items-center justify-center">
+                                <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-white"></div>
+                                <span class="ml-3 text-white text-lg">Memuat foto...</span>
+                            </div>
+
+                            <!-- Foto dalam modal dengan responsive sizing -->
+                            <img id="modalImage" src="" alt=""
+                                class="max-w-full max-h-full object-contain rounded-lg shadow-2xl hidden transition-all duration-300"
+                                onclick="event.stopPropagation()" onload="hideLoader()" onerror="showError()"
+                                style="max-width: 95vw; max-height: 85vh; width: auto; height: auto;">
+
+                            <!-- Error state -->
+                            <div id="imageError" class="hidden text-white text-center">
+                                <svg class="w-20 h-20 mx-auto mb-4 text-red-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <p class="text-lg">Foto tidak dapat dimuat</p>
+                                <p class="text-sm text-gray-300 mt-2">Pastikan file foto tersedia dan dapat diakses</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    @push('styles')
-        <style>
-            /* Custom styles for photo modal */
-            #photoModal {
-                backdrop-filter: blur(5px);
-            }
-            
-            #modalImage {
-                transition: transform 0.3s ease-in-out;
-                cursor: zoom-in;
-                user-select: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-            }
-            
-            #modalImage:hover {
-                cursor: zoom-in;
-            }
-            
-            #modalImage.zoomed {
-                cursor: grab;
-            }
-            
-            #modalImage.zoomed:active {
-                cursor: grabbing;
-            }
-            
-            /* Smooth transitions for modal elements */
-            .modal-transition {
-                transition: all 0.3s ease-in-out;
-            }
-            
-            /* Responsive button sizing */
-            @media (max-width: 640px) {
-                #modalCaption .flex {
-                    flex-direction: column;
-                    gap: 0.5rem;
+        @push('styles')
+            <style>
+                /* Custom styles for photo modal */
+                #photoModal {
+                    backdrop-filter: blur(5px);
                 }
-                
-                #modalCaption button {
-                    width: 100%;
-                    justify-content: center;
+
+                #modalImage {
+                    transition: transform 0.3s ease-in-out;
+                    user-select: none;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
                 }
-            }
-            
-            /* Loading animation improvements */
-            #imageLoader {
-                background: rgba(0, 0, 0, 0.3);
-                padding: 2rem;
-                border-radius: 1rem;
-                backdrop-filter: blur(10px);
-            }
-            
-            /* Error state improvements */
-            #imageError {
-                background: rgba(0, 0, 0, 0.3);
-                padding: 2rem;
-                border-radius: 1rem;
-                backdrop-filter: blur(10px);
-            }
-            
-            /* Smooth scrolling for the entire page */
-            html {
-                scroll-behavior: smooth;
-            }
-            
-            /* Prevent text selection during drag */
-            .no-select {
-                user-select: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-            }
-            
-            /* Zoom indicator */
-            .zoom-indicator {
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                background: rgba(0, 0, 0, 0.7);
-                color: white;
-                padding: 0.5rem 1rem;
-                border-radius: 0.5rem;
-                font-size: 0.875rem;
-                z-index: 10;
-            }
-        </style>
-    @endpush
 
-    @push('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const checkboxes = document.querySelectorAll('.attendance-checkbox');
-                const validateButton = document.getElementById('validateButton');
-                const validateAllButton = document.getElementById('validateAllButton');
+                /* Smooth transitions for modal elements */
+                .modal-transition {
+                    transition: all 0.3s ease-in-out;
+                }
 
-                // Enable/disable validate button based on checkbox selection
-                function updateValidateButton() {
-                    const checkedBoxes = document.querySelectorAll('.attendance-checkbox:checked');
-                    if (checkedBoxes.length > 0) {
-                        validateButton.disabled = false;
-                        validateButton.classList.remove('opacity-50', 'cursor-not-allowed');
-                        validateButton.classList.add('hover:bg-green-700');
-                    } else {
-                        validateButton.disabled = true;
-                        validateButton.classList.add('opacity-50', 'cursor-not-allowed');
-                        validateButton.classList.remove('hover:bg-green-700');
+                /* Responsive button sizing */
+                @media (max-width: 640px) {
+                    #modalCaption .flex {
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+
+                    #modalCaption button {
+                        width: 100%;
+                        justify-content: center;
                     }
                 }
 
-                // Check all checkboxes
-                if (validateAllButton) {
-                    validateAllButton.addEventListener('click', function() {
-                        checkboxes.forEach(checkbox => {
-                            checkbox.checked = true;
-                        });
-                        updateValidateButton();
-                    });
+                /* Loading animation improvements */
+                #imageLoader {
+                    background: rgba(0, 0, 0, 0.3);
+                    padding: 2rem;
+                    border-radius: 1rem;
+                    backdrop-filter: blur(10px);
                 }
 
-                // Add event listeners to checkboxes
-                checkboxes.forEach(checkbox => {
-                    checkbox.addEventListener('change', updateValidateButton);
+                /* Error state improvements */
+                #imageError {
+                    background: rgba(0, 0, 0, 0.3);
+                    padding: 2rem;
+                    border-radius: 1rem;
+                    backdrop-filter: blur(10px);
+                }
+
+                /* Smooth scrolling for the entire page */
+                html {
+                    scroll-behavior: smooth;
+                }
+
+                /* Prevent text selection during drag */
+                .no-select {
+                    user-select: none;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                }
+
+                /* Zoom indicator */
+                .zoom-indicator {
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: rgba(0, 0, 0, 0.7);
+                    color: white;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
+                    font-size: 0.875rem;
+                    z-index: 10;
+                }
+            </style>
+        @endpush
+
+        @push('scripts')
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const checkboxes = document.querySelectorAll('.attendance-checkbox');
+                    const validateButton = document.getElementById('validateButton');
+                    const validateAllButton = document.getElementById('validateAllButton');
+
+                    // Enable/disable validate button based on checkbox selection
+                    function updateValidateButton() {
+                        const checkedBoxes = document.querySelectorAll('.attendance-checkbox:checked');
+                        if (checkedBoxes.length > 0) {
+                            validateButton.disabled = false;
+                            validateButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                            validateButton.classList.add('hover:bg-green-700');
+                        } else {
+                            validateButton.disabled = true;
+                            validateButton.classList.add('opacity-50', 'cursor-not-allowed');
+                            validateButton.classList.remove('hover:bg-green-700');
+                        }
+                    }
+
+                    // Check all checkboxes
+                    if (validateAllButton) {
+                        validateAllButton.addEventListener('click', function() {
+                            checkboxes.forEach(checkbox => {
+                                checkbox.checked = true;
+                            });
+                            updateValidateButton();
+                        });
+                    }
+
+                    // Add event listeners to checkboxes
+                    checkboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', updateValidateButton);
+                    });
+
+                    // Initial button state
+                    updateValidateButton();
                 });
 
-                // Initial button state
-                updateValidateButton();
-            });
+                document.addEventListener('DOMContentLoaded', function() {
+                    const form = document.getElementById('validationForm');
+                    const submitBtn = document.getElementById('validateButton');
 
-            document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('validationForm');
-                const submitBtn = document.getElementById('validateButton');
+                    // Form submission handler
+                    if (submitBtn) {
+                        submitBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
 
-                // Form submission handler
-                if (submitBtn) {
-                    submitBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-
-                        // Show confirmation dialog
-                        Swal.fire({
-                            title: 'Konfirmasi Validasi',
-                            text: 'Setelah divalidasi, jadwal akan terkunci dan tidak dapat diubah lagi. Apakah Anda yakin?',
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonColor: '#10B981',
-                            cancelButtonColor: '#6B7280',
-                            confirmButtonText: 'Ya, Validasi',
-                            cancelButtonText: 'Batal'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                form.submit();
-                            }
+                            // Show confirmation dialog
+                            Swal.fire({
+                                title: 'Konfirmasi Validasi',
+                                text: 'Setelah divalidasi, jadwal akan terkunci dan tidak dapat diubah lagi. Apakah Anda yakin?',
+                                icon: 'question',
+                                showCancelButton: true,
+                                confirmButtonColor: '#10B981',
+                                cancelButtonColor: '#6B7280',
+                                confirmButtonText: 'Ya, Validasi',
+                                cancelButtonText: 'Batal'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    form.submit();
+                                }
+                            });
                         });
-                    });
-                }
-            });
+                    }
+                });
 
-            // Photo Modal Functions
-            let currentZoom = 1;
-            let originalImageSize = { width: 0, height: 0 };
-            let isDragging = false;
-            let startX = 0;
-            let startY = 0;
-            let translateX = 0;
-            let translateY = 0;
-
-            function openPhotoModal(imageSrc, caption) {
-                const modal = document.getElementById('photoModal');
-                const modalImage = document.getElementById('modalImage');
-                const modalCaption = document.getElementById('modalCaption');
-                const modalTitle = document.getElementById('modalTitle');
-                const loader = document.getElementById('imageLoader');
-                const errorDiv = document.getElementById('imageError');
-                const downloadBtn = document.getElementById('downloadBtn');
-                
-                // Reset zoom and position
-                currentZoom = 1;
-                translateX = 0;
-                translateY = 0;
-                
-                // Reset states
-                modalImage.classList.add('hidden');
-                modalCaption.classList.add('hidden');
-                errorDiv.classList.add('hidden');
-                loader.classList.remove('hidden');
-                
-                // Set content
-                modalImage.src = imageSrc;
-                modalImage.alt = caption;
-                modalTitle.textContent = caption;
-                modalCaption.querySelector('p').textContent = caption;
-                
-                // Setup download button
-                downloadBtn.onclick = function() {
-                    const link = document.createElement('a');
-                    link.href = imageSrc;
-                    link.download = imageSrc.split('/').pop();
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                // Photo Modal Functions
+                let currentZoom = 1;
+                let originalImageSize = {
+                    width: 0,
+                    height: 0
                 };
-                
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            }
+                let isDragging = false;
+                let startX = 0;
+                let startY = 0;
+                let translateX = 0;
+                let translateY = 0;
 
-            function closePhotoModal() {
-                const modal = document.getElementById('photoModal');
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                
-                // Reset zoom and position
-                currentZoom = 1;
-                translateX = 0;
-                translateY = 0;
-                const modalImage = document.getElementById('modalImage');
-                if (modalImage) {
-                    modalImage.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
+                function openPhotoModal(imageSrc, caption) {
+                    const modal = document.getElementById('photoModal');
+                    const modalImage = document.getElementById('modalImage');
+                    const modalTitle = document.getElementById('modalTitle');
+                    const loader = document.getElementById('imageLoader');
+                    const errorDiv = document.getElementById('imageError');
+
+                    // Reset states
+                    modalImage.classList.add('hidden');
+                    errorDiv.classList.add('hidden');
+                    loader.classList.remove('hidden');
+
+                    // Set content
+                    modalImage.src = imageSrc;
+                    modalImage.alt = caption;
+                    modalTitle.textContent = caption;
+
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
                 }
-                
 
-            }
+                function closePhotoModal() {
+                    const modal = document.getElementById('photoModal');
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
 
-            function hideLoader() {
-                const modalImage = document.getElementById('modalImage');
-                const modalCaption = document.getElementById('modalCaption');
-                const loader = document.getElementById('imageLoader');
-                
-                loader.classList.add('hidden');
-                modalImage.classList.remove('hidden');
-                modalCaption.classList.remove('hidden');
-                
-                // Store original image dimensions for zoom calculations
-                setTimeout(() => {
-                    if (modalImage.naturalWidth && modalImage.naturalHeight) {
-                        originalImageSize.width = modalImage.naturalWidth;
-                        originalImageSize.height = modalImage.naturalHeight;
-                        
-                        // Auto-adjust image size based on orientation
+                function hideLoader() {
+                    const modalImage = document.getElementById('modalImage');
+                    const loader = document.getElementById('imageLoader');
+
+                    loader.classList.add('hidden');
+                    modalImage.classList.remove('hidden');
+
+                    // Auto-adjust image size based on orientation
+                    setTimeout(() => {
                         adjustImageSize(modalImage);
-                        
-                        // Setup drag events
-                        setupDragEvents(modalImage);
+                    }, 100);
+                }
+
+                function setupDragEvents(imgElement) {
+                    imgElement.addEventListener('mousedown', startDrag);
+                    imgElement.addEventListener('mousemove', drag);
+                    imgElement.addEventListener('mouseup', endDrag);
+                    imgElement.addEventListener('mouseleave', endDrag);
+
+                    // Touch events for mobile
+                    imgElement.addEventListener('touchstart', startDragTouch);
+                    imgElement.addEventListener('touchmove', dragTouch);
+                    imgElement.addEventListener('touchend', endDrag);
+
+                    // Double click to zoom
+                    imgElement.addEventListener('dblclick', toggleZoom);
+
+                    // Wheel zoom
+                    imgElement.addEventListener('wheel', handleWheel);
+                }
+
+                function startDrag(e) {
+                    if (currentZoom > 1) {
+                        isDragging = true;
+                        startX = e.clientX - translateX;
+                        startY = e.clientY - translateY;
+                        e.preventDefault();
                     }
-                }, 100);
-            }
-
-            function setupDragEvents(imgElement) {
-                imgElement.addEventListener('mousedown', startDrag);
-                imgElement.addEventListener('mousemove', drag);
-                imgElement.addEventListener('mouseup', endDrag);
-                imgElement.addEventListener('mouseleave', endDrag);
-                
-                // Touch events for mobile
-                imgElement.addEventListener('touchstart', startDragTouch);
-                imgElement.addEventListener('touchmove', dragTouch);
-                imgElement.addEventListener('touchend', endDrag);
-                
-                // Double click to zoom
-                imgElement.addEventListener('dblclick', toggleZoom);
-                
-                // Wheel zoom
-                imgElement.addEventListener('wheel', handleWheel);
-            }
-
-            function startDrag(e) {
-                if (currentZoom > 1) {
-                    isDragging = true;
-                    startX = e.clientX - translateX;
-                    startY = e.clientY - translateY;
-                    e.preventDefault();
                 }
-            }
 
-            function drag(e) {
-                if (isDragging && currentZoom > 1) {
-                    translateX = e.clientX - startX;
-                    translateY = e.clientY - startY;
-                    applyZoom();
-                    e.preventDefault();
+                function drag(e) {
+                    if (isDragging && currentZoom > 1) {
+                        translateX = e.clientX - startX;
+                        translateY = e.clientY - startY;
+                        applyZoom();
+                        e.preventDefault();
+                    }
                 }
-            }
 
-            function startDragTouch(e) {
-                if (currentZoom > 1 && e.touches.length === 1) {
-                    isDragging = true;
-                    startX = e.touches[0].clientX - translateX;
-                    startY = e.touches[0].clientY - translateY;
-                    e.preventDefault();
+                function startDragTouch(e) {
+                    if (currentZoom > 1 && e.touches.length === 1) {
+                        isDragging = true;
+                        startX = e.touches[0].clientX - translateX;
+                        startY = e.touches[0].clientY - translateY;
+                        e.preventDefault();
+                    }
                 }
-            }
 
-            function dragTouch(e) {
-                if (isDragging && currentZoom > 1 && e.touches.length === 1) {
-                    translateX = e.touches[0].clientX - startX;
-                    translateY = e.touches[0].clientY - startY;
-                    applyZoom();
-                    e.preventDefault();
-                }
-                
-                // Handle pinch to zoom
-                if (e.touches.length === 2) {
-                    e.preventDefault();
-                    const touch1 = e.touches[0];
-                    const touch2 = e.touches[1];
-                    
-                    const currentDistance = Math.hypot(
-                        touch2.clientX - touch1.clientX,
-                        touch2.clientY - touch1.clientY
-                    );
-                    
-                    if (!window.lastTouchDistance) {
+                function dragTouch(e) {
+                    if (isDragging && currentZoom > 1 && e.touches.length === 1) {
+                        translateX = e.touches[0].clientX - startX;
+                        translateY = e.touches[0].clientY - startY;
+                        applyZoom();
+                        e.preventDefault();
+                    }
+
+                    // Handle pinch to zoom
+                    if (e.touches.length === 2) {
+                        e.preventDefault();
+                        const touch1 = e.touches[0];
+                        const touch2 = e.touches[1];
+
+                        const currentDistance = Math.hypot(
+                            touch2.clientX - touch1.clientX,
+                            touch2.clientY - touch1.clientY
+                        );
+
+                        if (!window.lastTouchDistance) {
+                            window.lastTouchDistance = currentDistance;
+                            return;
+                        }
+
+                        const scale = currentDistance / window.lastTouchDistance;
+                        const newZoom = Math.max(0.5, Math.min(3, currentZoom * scale));
+
+                        if (Math.abs(newZoom - currentZoom) > 0.1) {
+                            currentZoom = newZoom;
+                            applyZoom();
+                        }
+
                         window.lastTouchDistance = currentDistance;
-                        return;
                     }
-                    
-                    const scale = currentDistance / window.lastTouchDistance;
-                    const newZoom = Math.max(0.5, Math.min(3, currentZoom * scale));
-                    
-                    if (Math.abs(newZoom - currentZoom) > 0.1) {
+                }
+
+                function endDrag() {
+                    isDragging = false;
+                    window.lastTouchDistance = null;
+                }
+
+                function adjustImageSize(imgElement) {
+                    const containerWidth = window.innerWidth * 0.95; // 95vw
+                    const containerHeight = window.innerHeight * 0.85; // 85vh
+
+                    const imgAspectRatio = imgElement.naturalWidth / imgElement.naturalHeight;
+                    const containerAspectRatio = containerWidth / containerHeight;
+
+                    let newWidth, newHeight;
+
+                    if (imgAspectRatio > containerAspectRatio) {
+                        // Landscape image - fit to width
+                        newWidth = Math.min(containerWidth, imgElement.naturalWidth);
+                        newHeight = newWidth / imgAspectRatio;
+                    } else {
+                        // Portrait image - fit to height
+                        newHeight = Math.min(containerHeight, imgElement.naturalHeight);
+                        newWidth = newHeight * imgAspectRatio;
+                    }
+
+                    // Ensure minimum size for readability
+                    const minSize = 200;
+                    if (newWidth < minSize || newHeight < minSize) {
+                        if (newWidth < newHeight) {
+                            newWidth = minSize;
+                            newHeight = minSize / imgAspectRatio;
+                        } else {
+                            newHeight = minSize;
+                            newWidth = minSize * imgAspectRatio;
+                        }
+                    }
+
+                    imgElement.style.width = newWidth + 'px';
+                    imgElement.style.height = newHeight + 'px';
+                }
+
+                function showError() {
+                    const loader = document.getElementById('imageLoader');
+                    const errorDiv = document.getElementById('imageError');
+
+                    loader.classList.add('hidden');
+                    errorDiv.classList.remove('hidden');
+                }
+
+                // Close modal dengan ESC key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        closePhotoModal();
+                    }
+                });
+
+                function applyZoom() {
+                    const modalImage = document.getElementById('modalImage');
+                    const zoomIndicator = document.getElementById('zoomIndicator');
+                    const zoomLevelSpan = document.getElementById('zoomLevel');
+
+                    if (modalImage) {
+                        modalImage.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
+                        modalImage.style.transformOrigin = 'center center';
+
+                        // Update cursor based on zoom level
+                        if (currentZoom > 1) {
+                            modalImage.style.cursor = 'grab';
+                            if (isDragging) {
+                                modalImage.style.cursor = 'grabbing';
+                            }
+                        } else {
+                            modalImage.style.cursor = 'zoom-in';
+                        }
+
+                        // Update zoom indicator
+                        if (zoomIndicator && zoomLevelSpan) {
+                            zoomLevelSpan.textContent = `${Math.round(currentZoom * 100)}%`;
+                            zoomIndicator.classList.remove('hidden');
+                        }
+                    }
+                }
+
+                function toggleZoom() {
+                    if (currentZoom === 1) {
+                        currentZoom = 2;
+                    } else {
+                        currentZoom = 1;
+                        translateX = 0;
+                        translateY = 0;
+                    }
+                    applyZoom();
+                }
+
+                function handleWheel(e) {
+                    e.preventDefault();
+                    const delta = e.deltaY > 0 ? -0.2 : 0.2;
+                    const newZoom = Math.max(0.5, Math.min(3, currentZoom + delta));
+
+                    if (newZoom !== currentZoom) {
                         currentZoom = newZoom;
                         applyZoom();
                     }
-                    
-                    window.lastTouchDistance = currentDistance;
                 }
-            }
 
-            function endDrag() {
-                isDragging = false;
-                window.lastTouchDistance = null;
-            }
 
-            function adjustImageSize(imgElement) {
-                const containerWidth = window.innerWidth * 0.95; // 95vw
-                const containerHeight = window.innerHeight * 0.85; // 85vh
-                
-                const imgAspectRatio = imgElement.naturalWidth / imgElement.naturalHeight;
-                const containerAspectRatio = containerWidth / containerHeight;
-                
-                let newWidth, newHeight;
-                
-                if (imgAspectRatio > containerAspectRatio) {
-                    // Landscape image - fit to width
-                    newWidth = Math.min(containerWidth, imgElement.naturalWidth);
-                    newHeight = newWidth / imgAspectRatio;
-                } else {
-                    // Portrait image - fit to height
-                    newHeight = Math.min(containerHeight, imgElement.naturalHeight);
-                    newWidth = newHeight * imgAspectRatio;
-                }
-                
-                // Ensure minimum size for readability
-                const minSize = 200;
-                if (newWidth < minSize || newHeight < minSize) {
-                    if (newWidth < newHeight) {
-                        newWidth = minSize;
-                        newHeight = minSize / imgAspectRatio;
-                    } else {
-                        newHeight = minSize;
-                        newWidth = minSize * imgAspectRatio;
+
+                // Close modal dengan ESC key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        closePhotoModal();
                     }
-                }
-                
-                imgElement.style.width = newWidth + 'px';
-                imgElement.style.height = newHeight + 'px';
-            }
+                });
 
-            function showError() {
-                const loader = document.getElementById('imageLoader');
-                const errorDiv = document.getElementById('imageError');
-                
-                loader.classList.add('hidden');
-                errorDiv.classList.remove('hidden');
-            }
-
-            function zoomIn() {
-                if (currentZoom < 3) {
-                    currentZoom += 0.5;
-                    applyZoom();
-                }
-            }
-
-            function zoomOut() {
-                if (currentZoom > 0.5) {
-                    currentZoom -= 0.5;
-                    applyZoom();
-                }
-            }
-
-            function resetZoom() {
-                currentZoom = 1;
-                translateX = 0;
-                translateY = 0;
-                applyZoom();
-                
-                // Hide zoom indicator when reset
-                const zoomIndicator = document.getElementById('zoomIndicator');
-                if (zoomIndicator) {
-                    zoomIndicator.classList.add('hidden');
-                }
-            }
-
-            function applyZoom() {
-                const modalImage = document.getElementById('modalImage');
-                const zoomIndicator = document.getElementById('zoomIndicator');
-                const zoomLevelSpan = document.getElementById('zoomLevel');
-
-                if (modalImage) {
-                    modalImage.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
-                    modalImage.style.transformOrigin = 'center center';
-                    
-                    // Update cursor based on zoom level
-                    if (currentZoom > 1) {
-                        modalImage.style.cursor = 'grab';
-                        if (isDragging) {
-                            modalImage.style.cursor = 'grabbing';
-                        }
-                    } else {
-                        modalImage.style.cursor = 'zoom-in';
+                window.addEventListener('resize', function() {
+                    const modalImage = document.getElementById('modalImage');
+                    if (modalImage && !modalImage.classList.contains('hidden')) {
+                        adjustImageSize(modalImage);
                     }
-
-                    // Update zoom indicator
-                    if (zoomIndicator && zoomLevelSpan) {
-                        zoomLevelSpan.textContent = `${Math.round(currentZoom * 100)}%`;
-                        zoomIndicator.classList.remove('hidden');
-                    }
-                }
-            }
-
-            function toggleZoom() {
-                if (currentZoom === 1) {
-                    currentZoom = 2;
-                } else {
-                    currentZoom = 1;
-                    translateX = 0;
-                    translateY = 0;
-                }
-                applyZoom();
-            }
-
-            function handleWheel(e) {
-                e.preventDefault();
-                const delta = e.deltaY > 0 ? -0.2 : 0.2;
-                const newZoom = Math.max(0.5, Math.min(3, currentZoom + delta));
-                
-                if (newZoom !== currentZoom) {
-                    currentZoom = newZoom;
-                    applyZoom();
-                }
-            }
-
-
-
-            // Close modal dengan ESC key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closePhotoModal();
-                }
-            });
-
-            // Handle window resize for responsive image sizing
-            window.addEventListener('resize', function() {
-                const modalImage = document.getElementById('modalImage');
-                if (modalImage && !modalImage.classList.contains('hidden')) {
-                    adjustImageSize(modalImage);
-                    // Reset position when resizing
-                    translateX = 0;
-                    translateY = 0;
-                    applyZoom();
-                }
-            });
-        </script>
-    @endpush
-@endsection
+                });
+            </script>
+        @endpush
+    @endsection
