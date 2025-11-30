@@ -20,7 +20,7 @@
                 <form action="{{ route('admin.generate.weekly.form') }}" method="GET" class="inline">
                     <button type="submit"
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                        Generate Jadwal Mingguan
+                        Tambah Jadwal Mingguan
                     </button>
                 </form>
             </div>
