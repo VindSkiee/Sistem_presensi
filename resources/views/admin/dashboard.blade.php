@@ -227,12 +227,8 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <span
                                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                    {{ $attendance->status === 'present'
-                                                        ? 'bg-green-100 text-green-800'
-                                                        : ($attendance->status === 'alpa'
-                                                            ? 'bg-red-100 text-red-800'
-                                                            : 'bg-gray-100 text-gray-800') }}">
-                                                    {{ ucfirst($attendance->status) }}
+                                                    {{ $attendance->status === 'present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                                    {{ $attendance->status === 'present' ? 'Hadir' : ucfirst($attendance->status ?? 'Alpa') }}
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
