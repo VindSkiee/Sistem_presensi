@@ -48,6 +48,15 @@ class UserController extends Controller
             'person_id' => 'required|exists:persons,id',
             'status' => 'required|in:present,alpa',
             'description' => $request->status === 'alpa' ? 'required|string' : 'nullable|string',
+        ], [
+            'schedule_id.required' => 'ID jadwal wajib diisi.',
+            'schedule_id.exists' => 'Jadwal tidak ditemukan.',
+            'person_id.required' => 'ID orang wajib diisi.',
+            'person_id.exists' => 'Orang tidak ditemukan.',
+            'status.required' => 'Status kehadiran wajib diisi.',
+            'status.in' => 'Status harus hadir atau alpa.',
+            'description.required' => 'Keterangan wajib diisi untuk status alpa.',
+            'description.string' => 'Keterangan harus berupa teks.',
         ]);
 
         $userId = Auth::id();
@@ -79,6 +88,11 @@ class UserController extends Controller
         // Validasi
         $request->validate([
             'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ], [
+            'photo.required' => 'Foto wajib diupload.',
+            'photo.image' => 'File harus berupa gambar.',
+            'photo.mimes' => 'Foto harus berformat jpg, jpeg, atau png.',
+            'photo.max' => 'Ukuran foto maksimal 2MB.',
         ]);
 
         // Simpan foto ke storage

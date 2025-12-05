@@ -9,12 +9,14 @@ use App\Models\Attendance;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
     public function index()
     {
-        $admin = auth()->user();
+        /** @var \App\Models\User $admin */
+        $admin = Auth::user();
 
         // Get schedules with count of persons
         $schedules = Schedule::withCount('persons')
@@ -30,7 +32,8 @@ class ScheduleController extends Controller
 
     public function create()
     {
-        $admin = auth()->user();
+        /** @var \App\Models\User $admin */
+        $admin = Auth::user();
         $persons = Person::whereIn('user_id', $admin->users->pluck('id'))->get();
         return view('admin.schedules.create', compact('persons'));
     }
@@ -41,12 +44,17 @@ class ScheduleController extends Controller
         $request->validate([
             'date' => 'required|date',
             'persons' => 'array',
+        ], [
+            'date.required' => 'Tanggal wajib diisi.',
+            'date.date' => 'Format tanggal tidak valid.',
+            'persons.array' => 'Data orang tidak valid.',
         ]);
 
         try {
             DB::beginTransaction();
 
-            $admin = auth()->user();
+            /** @var \App\Models\User $admin */
+            $admin = Auth::user();
 
             $schedule = Schedule::create([
                 'date' => $request->date,
@@ -83,7 +91,8 @@ class ScheduleController extends Controller
 
     public function edit(Schedule $schedule)
     {
-        $admin = auth()->user();
+        /** @var \App\Models\User $admin */
+        $admin = Auth::user();
 
         // Authorization
         abort_if($schedule->admin_id !== $admin->id, 403, 'Unauthorized action.');
@@ -104,7 +113,8 @@ class ScheduleController extends Controller
 
     public function update(Request $request, Schedule $schedule)
     {
-        $admin = auth()->user();
+        /** @var \App\Models\User $admin */
+        $admin = Auth::user();
         abort_if($schedule->admin_id !== $admin->id, 403, 'Unauthorized action.');
 
         $validated = $request->validate([
@@ -114,6 +124,17 @@ class ScheduleController extends Controller
             'attendances.*.status' => 'required|in:present,alpa',
             // Remove the 'sometimes' rule as we always want this field
             'attendances.*.is_validated' => 'required|boolean'
+        ], [
+            'date.required' => 'Tanggal wajib diisi.',
+            'date.date' => 'Format tanggal tidak valid.',
+            'attendances.required' => 'Data kehadiran wajib diisi.',
+            'attendances.array' => 'Data kehadiran tidak valid.',
+            'attendances.*.person_id.required' => 'ID orang wajib diisi.',
+            'attendances.*.person_id.exists' => 'Orang tidak ditemukan.',
+            'attendances.*.status.required' => 'Status kehadiran wajib diisi.',
+            'attendances.*.status.in' => 'Status harus hadir atau alpa.',
+            'attendances.*.is_validated.required' => 'Status validasi wajib diisi.',
+            'attendances.*.is_validated.boolean' => 'Status validasi tidak valid.',
         ]);
 
         DB::transaction(function () use ($schedule, $validated) {
@@ -145,7 +166,7 @@ class ScheduleController extends Controller
 
     public function destroy(Schedule $schedule)
     {
-        if ($schedule->admin_id !== auth()->id()) {
+        if ($schedule->admin_id !== Auth::id()) {
             abort(403);
         }
 
@@ -158,7 +179,9 @@ class ScheduleController extends Controller
 
     public function showGenerateWeeklyForm()
     {
-        $persons = Person::whereIn('user_id', auth()->user()->users->pluck('id'))->get();
+        /** @var \App\Models\User $admin */
+        $admin = Auth::user();
+        $persons = Person::whereIn('user_id', $admin->users->pluck('id'))->get();
         if ($persons->isEmpty()) {
             return redirect()->back()->with('error', 'Tidak ada orang yang tersedia untuk dijadwalkan.');
         }
@@ -178,7 +201,8 @@ class ScheduleController extends Controller
 
         Log::info('Orang yang dipilih: ', $personIds);
 
-        $admin = auth()->user();
+        /** @var \App\Models\User $admin */
+        $admin = Auth::user();
         $adminId = $admin && $admin->hasRole('admin') ? $admin->id : null;
 
         // Ambil jadwal terakhir untuk admin ini saja

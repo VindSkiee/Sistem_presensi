@@ -34,6 +34,13 @@ class PersonController extends Controller
             'email' => 'nullable|email|unique:persons,email|unique:users,email',
             'phone' => 'nullable|string',
             'password' => 'required|string|min:6',
+        ], [
+            'name.required' => 'Nama wajib diisi.',
+            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah terdaftar.',
+            'password.required' => 'Password wajib diisi.',
+            'password.min' => 'Password minimal 6 karakter.',
         ]);
 
         DB::beginTransaction();
@@ -100,6 +107,11 @@ class PersonController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|unique:persons,email,' . $person->id,
             'phone' => 'nullable|string',
+        ], [
+            'name.required' => 'Nama wajib diisi.',
+            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah terdaftar.',
         ]);
 
         $person->update($request->only(['name', 'email', 'phone']));

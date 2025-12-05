@@ -65,6 +65,15 @@ class AdminController extends Controller
             'attendances' => 'required|array',
             'attendances.*.id' => 'required|exists:attendances,id',
             'attendances.*.status' => 'required|in:present,alpa',
+        ], [
+            'schedule_id.required' => 'ID jadwal wajib diisi.',
+            'schedule_id.exists' => 'Jadwal tidak ditemukan.',
+            'attendances.required' => 'Data kehadiran wajib diisi.',
+            'attendances.array' => 'Data kehadiran tidak valid.',
+            'attendances.*.id.required' => 'ID kehadiran wajib diisi.',
+            'attendances.*.id.exists' => 'Data kehadiran tidak ditemukan.',
+            'attendances.*.status.required' => 'Status kehadiran wajib diisi.',
+            'attendances.*.status.in' => 'Status harus hadir atau alpa.',
         ]);
 
         $admin = Auth::user();
