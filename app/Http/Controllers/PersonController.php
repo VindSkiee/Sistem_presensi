@@ -69,6 +69,12 @@ class PersonController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Error creating person and user: ' . $e->getMessage());
+
+            // Handler untuk constraint violation
+            if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
+                return back()->with('error', 'Email sudah terdaftar. Silakan gunakan email yang berbeda.');
+            }
+
             return back()->with('error', 'Gagal membuat user: ' . $e->getMessage());
         }
     }
