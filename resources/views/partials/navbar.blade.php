@@ -35,9 +35,10 @@
                     </div>
                     
                     <!-- Logout Button -->
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('logout') }}" id="logout-form">
                         @csrf
-                        <button type="submit" 
+                        <button type="button" 
+                                onclick="confirmLogout()"
                                 class="group flex items-center space-x-2 bg-slate-700/50 hover:bg-red-600/20 text-slate-300 hover:text-red-400 px-4 py-2 rounded-xl transition-all duration-300 border border-slate-600/50 hover:border-red-500/50">
                             <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>

@@ -9,13 +9,36 @@
                 <h1 class="text-2xl font-bold text-gray-800">Login</h1>
             </div>
             
+            <!-- Alert Error -->
             @if ($errors->any())
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                    <ul>
+                <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p class="text-red-800 font-semibold mb-2">❌ Terjadi kesalahan:</p>
+                    <ul class="text-red-700 text-sm space-y-1">
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <li>• {{ $error }}</li>
                         @endforeach
                     </ul>
+                </div>
+            @endif
+
+            <!-- Alert Success -->
+            @if (session('success'))
+                <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <p class="text-green-800 font-semibold">✓ {{ session('success') }}</p>
+                </div>
+            @endif
+
+            <!-- Alert Warning -->
+            @if (session('warning'))
+                <div class="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <p class="text-yellow-800 font-semibold">⚠️ {{ session('warning') }}</p>
+                </div>
+            @endif
+
+            <!-- Alert Error Session -->
+            @if (session('error'))
+                <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p class="text-red-800 font-semibold">❌ {{ session('error') }}</p>
                 </div>
             @endif
 

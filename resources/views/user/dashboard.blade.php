@@ -1,14 +1,39 @@
-<!-- resources/views/user/dashboard.blade.php -->
 @extends('layouts.app')
 
 @section('content')
     <div class="py-6">
         <h1 class="text-2xl font-bold text-gray-800 mb-6">Dashboard Presensi</h1>
 
+        <!-- Alert Error -->
+        @if ($errors->any())
+            <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p class="text-red-800 font-semibold mb-2">❌ Terjadi kesalahan:</p>
+                <ul class="text-red-700 text-sm space-y-1">
+                    @foreach ($errors->all() as $error)
+                        <li>• {{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <!-- Alert Success -->
+        @if (session('success'))
+            <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p class="text-green-800 font-semibold">✓ {{ session('success') }}</p>
+            </div>
+        @endif
+
+        <!-- Alert Warning -->
+        @if (session('warning'))
+            <div class="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p class="text-yellow-800 font-semibold">⚠️ {{ session('warning') }}</p>
+            </div>
+        @endif
+
         @if ($schedule)
             @if ($schedule->is_validated)
                 <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-6">
-                    <p>Jadwal ini sudah divalidasi oleh admin. Tidak dapat melakukan perubahan presensi.</p>
+                    <p>✓ Jadwal ini sudah divalidasi oleh admin. Tidak dapat melakukan perubahan presensi.</p>
                 </div>
             @endif
 
@@ -29,13 +54,11 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($schedule->persons as $person)
+                            @forelse ($schedule->persons as $person)
                                 @php
-                                    // Cari attendance untuk person ini di schedule ini
                                     $attendance = $schedule->attendances->where('person_id', $person->id)->first();
                                     $status = $attendance ? $attendance->status : 'not_present';
-                                    $isCurrentUser =
-                                        auth()->user()->person && auth()->user()->person->id === $person->id;
+                                    $isCurrentUser = auth()->user()->person && auth()->user()->person->id === $person->id;
                                 @endphp
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -69,20 +92,27 @@
                                                         Alpa
                                                     </button>
                                                 @else
-                                                    <span class="text-gray-400">Sudah absen</span>
+                                                    <span class="text-gray-400">✓ Sudah absen</span>
                                                 @endif
                                             @else
-                                                <span class="text-gray-400">Terkunci (sudah divalidasi)</span>
+                                                <span class="text-gray-400">🔒 Terkunci</span>
                                             @endif
                                         @else
                                             <span class="text-gray-400">-</span>
                                         @endif
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="px-6 py-4 text-center text-gray-500">
+                                        Tidak ada orang di jadwal ini.
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
+
                 <div class="mt-6">
                     <h3 class="text-lg font-semibold mb-2">Bukti Foto Kehadiran</h3>
                     @if ($schedule->photo)
@@ -104,7 +134,15 @@
             </div>
         @else
             <div class="bg-white shadow rounded-lg p-6">
-                <p class="text-gray-600">Tidak ada jadwal untuk hari ini.</p>
+                <div class="flex items-center justify-center py-12">
+                    <div class="text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <p class="text-gray-600 text-lg font-medium">Tidak ada jadwal untuk hari ini</p>
+                        <p class="text-gray-500 text-sm mt-1">Silakan tunggu jadwal berikutnya</p>
+                    </div>
+                </div>
             </div>
         @endif
     </div>
@@ -123,8 +161,7 @@
                         <h3 class="text-xl font-semibold text-gray-800 mb-4">Konfirmasi Presensi</h3>
 
                         <div id="descriptionField" class="mb-4 hidden">
-                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Alasan
-                                Alpa</label>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Alasan Alpa</label>
                             <textarea name="description" id="description" rows="3"
                                 class="block w-full rounded-md border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
                         </div>
@@ -145,7 +182,6 @@
                         </button>
                     </div>
                 </form>
-
             </div>
         </div>
     @endif

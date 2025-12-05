@@ -4,6 +4,39 @@
 <div class="py-6">
     <h1 class="text-2xl font-bold text-gray-800 mb-6">Edit Orang</h1>
     
+    <!-- Alert Error -->
+    @if ($errors->any())
+        <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p class="text-red-800 font-semibold mb-2">❌ Terjadi kesalahan:</p>
+            <ul class="text-red-700 text-sm space-y-1">
+                @foreach ($errors->all() as $error)
+                    <li>• {{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <!-- Alert Success -->
+    @if (session('success'))
+        <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <p class="text-green-800 font-semibold">✓ {{ session('success') }}</p>
+        </div>
+    @endif
+
+    <!-- Alert Warning -->
+    @if (session('warning'))
+        <div class="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <p class="text-yellow-800 font-semibold">⚠️ {{ session('warning') }}</p>
+        </div>
+    @endif
+
+    <!-- Alert Error Session -->
+    @if (session('error'))
+        <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p class="text-red-800 font-semibold">❌ {{ session('error') }}</p>
+        </div>
+    @endif
+    
     <div class="bg-white shadow rounded-lg p-6">
         <form action="{{ route('admin.persons.update', $person) }}" method="POST">
             @csrf
