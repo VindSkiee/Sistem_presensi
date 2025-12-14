@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-4 py-10">
+    <div class="px-3 sm:px-4 py-6 sm:py-10">
         <!-- Alert Error -->
         @if ($errors->any())
-            <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div class="mb-4 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p class="text-red-800 font-semibold mb-2">❌ Terjadi kesalahan:</p>
                 <ul class="text-red-700 text-sm space-y-1">
                     @foreach ($errors->all() as $error)
@@ -36,64 +36,66 @@
         @endif
 
         <!-- Header with Gradient -->
-        <div class="mb-10 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 rounded-2xl shadow-xl p-8">
-            <div class="flex items-center justify-between">
+        <div class="mb-6 sm:mb-10 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div class="flex items-center">
-                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-3 mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24"
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 sm:h-10 sm:w-10 text-white" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-3xl font-extrabold text-white">Dashboard Super Admin</h1>
-                        <p class="text-indigo-100 text-sm mt-1">Monitoring Kehadiran RW</p>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold text-white">Dashboard Super Admin</h1>
+                        <p class="text-indigo-100 text-xs sm:text-sm mt-1">Monitoring Kehadiran RW</p>
                     </div>
                 </div>
-                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
-                    <p class="text-white text-sm font-medium">{{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM Y') }}</p>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-3 sm:px-4 py-1.5 sm:py-2">
+                    <p class="text-white text-xs sm:text-sm font-medium">{{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM Y') }}</p>
                 </div>
             </div>
         </div>
 
         <!-- Filter Section -->
-        <div class="bg-white rounded-xl shadow-md p-6 mb-8 border border-gray-100">
-            <form method="GET" action="{{ route('superadmin.dashboard') }}" class="flex flex-wrap items-end gap-4">
-                <div class="flex-1 min-w-[200px]">
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                        <svg class="inline w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-white rounded-lg sm:rounded-xl shadow-md p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-100">
+            <form method="GET" action="{{ route('superadmin.dashboard') }}" class="flex flex-col gap-3 sm:gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+                <div class="flex-1 min-w-full sm:min-w-[200px]">
+                    <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 sm:mb-2">
+                        <svg class="inline w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
                         Cari Nama User
                     </label>
                     <input type="text" name="search_name" value="{{ $searchName ?? '' }}" placeholder="Masukkan nama user..."
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                        class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
                 </div>
-                <div class="flex-1 min-w-[200px]">
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                        <svg class="inline w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex-1 min-w-full sm:min-w-[200px]">
+                    <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 sm:mb-2">
+                        <svg class="inline w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                         Tanggal Mulai
                     </label>
                     <input type="date" name="start_date" value="{{ $startDate ?? '' }}"
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                        class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
                 </div>
-                <div class="flex-1 min-w-[200px]">
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                        <svg class="inline w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex-1 min-w-full sm:min-w-[200px]">
+                    <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 sm:mb-2">
+                        <svg class="inline w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                         Tanggal Akhir
                     </label>
                     <input type="date" name="end_date" value="{{ $endDate ?? '' }}"
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                        class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
                 </div>
-                <div class="flex gap-2">
+            </div>
+                <div class="flex flex-col sm:flex-row gap-2">
                     <button type="submit"
-                        class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-200 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                         Filter

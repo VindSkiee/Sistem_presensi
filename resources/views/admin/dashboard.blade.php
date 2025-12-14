@@ -2,14 +2,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="py-6">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6">Dashboard Admin</h1>
+    <div class="py-4 sm:py-6">
+        <!-- Modern Header -->
+        <div class="mb-6 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 rounded-xl shadow-lg p-4 sm:p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold text-white mb-1">Dashboard Admin</h1>
+                    <p class="text-slate-300 text-sm">Kelola jadwal dan presensi</p>
+                </div>
+                <div class="hidden sm:block">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="text-white text-sm font-medium">{{ auth()->user()->name }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Alert Error -->
         @if ($errors->any())
-            <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p class="text-red-800 font-semibold mb-2">❌ Terjadi kesalahan:</p>
-                <ul class="text-red-700 text-sm space-y-1">
+            <div class="mb-4 p-4 bg-gradient-to-r from-red-50 to-red-50/50 border-l-4 border-red-500 rounded-lg shadow-sm">
+                <p class="text-red-800 font-bold text-sm sm:text-base mb-2 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                    Terjadi kesalahan:
+                </p>
+                <ul class="text-red-700 text-xs sm:text-sm space-y-1 ml-7">
                     @foreach ($errors->all() as $error)
                         <li>• {{ $error }}</li>
                     @endforeach
@@ -19,28 +38,40 @@
 
         <!-- Alert Success -->
         @if (session('success'))
-            <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p class="text-green-800 font-semibold">✓ {{ session('success') }}</p>
+            <div class="mb-4 p-4 bg-gradient-to-r from-emerald-50 to-emerald-50/50 border-l-4 border-emerald-500 rounded-lg shadow-sm">
+                <p class="text-emerald-800 font-bold text-sm sm:text-base flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    {{ session('success') }}
+                </p>
             </div>
         @endif
 
         <!-- Alert Warning -->
         @if (session('warning'))
-            <div class="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p class="text-yellow-800 font-semibold">⚠️ {{ session('warning') }}</p>
+            <div class="mb-4 p-4 bg-gradient-to-r from-yellow-50 to-yellow-50/50 border-l-4 border-yellow-500 rounded-lg shadow-sm">
+                <p class="text-yellow-800 font-bold text-sm sm:text-base flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                    {{ session('warning') }}
+                </p>
             </div>
         @endif
 
         <!-- Alert Error Session -->
         @if (session('error'))
-            <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p class="text-red-800 font-semibold">❌ {{ session('error') }}</p>
+            <div class="mb-4 p-4 bg-gradient-to-r from-red-50 to-red-50/50 border-l-4 border-red-500 rounded-lg shadow-sm">
+                <p class="text-red-800 font-bold text-sm sm:text-base flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                    {{ session('error') }}
+                </p>
             </div>
         @endif
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white shadow rounded-lg p-6">
-                <h2 class="text-xl font-semibold mb-4">Jadwal Hari Ini ({{ now()->isoFormat('dddd, D MMMM Y') }})</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+            <div class="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-slate-200">
+                <div class="border-b border-slate-200 pb-3 mb-4">
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-800">Jadwal Hari Ini</h2>
+                    <p class="text-sm text-slate-600 mt-1">{{ now()->isoFormat('dddd, D MMMM Y') }}</p>
+                </div>
 
                 @if ($schedule && $schedule->is_validated)
                     <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400">

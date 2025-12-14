@@ -38,7 +38,7 @@
 
             <div class="flex justify-between items-center mb-6">
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-900">Edit Jadwal - {{ $schedule->updated_at->format('d M Y') }}
+                    <h1 class="text-2xl font-bold text-gray-900">Ubah Jadwal - {{ $schedule->updated_at->format('d M Y') }}
                     </h1>
                     <p class="text-sm text-gray-500 mt-1">
                         Status:

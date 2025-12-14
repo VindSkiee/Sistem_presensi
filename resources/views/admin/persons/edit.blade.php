@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="py-6">
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Edit Orang</h1>
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Ubah Data Orang</h1>
     
     <!-- Alert Error -->
     @if ($errors->any())
@@ -62,7 +62,7 @@
             
             <div class="flex items-center justify-between">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Update
+                    Perbarui
                 </button>
                 <a href="{{ route('admin.persons.index') }}" class="text-gray-600 hover:text-gray-800">Batal</a>
             </div>
