@@ -77,11 +77,11 @@
                             <table class="min-w-full divide-y divide-slate-200">
                         <thead class="bg-gradient-to-r from-slate-50 to-slate-100">
                             <tr>
-                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-slate-700 uppercase tracking-wider">
+                                <th class="px-3 sm:px-6 py-3 text-center text-xs font-bold text-slate-700 uppercase tracking-wider">
                                     Nama</th>
-                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-slate-700 uppercase tracking-wider">
+                                <th class="px-3 sm:px-6 py-3 text-center text-xs font-bold text-slate-700 uppercase tracking-wider">
                                     Status</th>
-                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-slate-700 uppercase tracking-wider">
+                                <th class="px-3 sm:px-6 py-3 text-center text-xs font-bold text-slate-700 uppercase tracking-wider">
                                     Pilih Aksi</th>
                             </tr>
                         </thead>
@@ -93,12 +93,12 @@
                                     $isCurrentUser = auth()->user()->person && auth()->user()->person->id === $person->id;
                                 @endphp
                                 <tr>
-                                    <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
+                                    <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-center">
+                                        <div class="flex items-center justify-center">
                                             <div class="text-xs sm:text-sm font-medium text-gray-900">{{ $person->name }}</div>
                                         </div>
                                     </td>
-                                    <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                                    <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-center">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                                             {{ $status === 'present'
@@ -109,7 +109,7 @@
                                             {{ $status === 'present' ? 'Hadir' : ($status === 'alpa' ? 'Alpa' : 'Belum absen') }}
                                         </span>
                                     </td>
-                                    <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
+                                    <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500 text-center">
                                         @if ($isCurrentUser)
                                             @if (!$schedule->is_validated)
                                                 @if (!$attendance || $attendance->status === 'alpa')

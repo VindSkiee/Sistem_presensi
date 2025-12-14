@@ -127,19 +127,19 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Nama
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Status Kehadiran
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Deskripsi
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Status Validasi
                                     </th>
                                 </tr>
@@ -257,19 +257,19 @@
                                 <thead class="bg-gray-50">
                                     <tr>
                                         <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Nama
                                         </th>
                                         <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Status
                                         </th>
                                         <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Deskripsi
                                         </th>
                                         <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Validasi
                                         </th>
                                     </tr>
@@ -277,22 +277,22 @@
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @foreach ($schedule->attendances as $attendance)
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="flex items-center">
+                                            <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-center">
+                                                <div class="flex items-center justify-center">
                                                     <div class="text-sm font-medium text-gray-900">
                                                         {{ $attendance->person->name }}
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
+                                            <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-center">
                                                 <span
                                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                                                     {{ $attendance->status === 'present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                                     {{ $attendance->status === 'present' ? 'Hadir' : ucfirst($attendance->status ?? 'Alpa') }}
                                                 </span>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="flex items-center">
+                                            <td class="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-center">
+                                                <div class="flex items-center justify-center">
                                                     <div class="text-sm text-gray-900">
                                                         @if ($attendance->status === 'alpa' && $attendance->description)
                                                             {{ $attendance->description }}
@@ -302,7 +302,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                                 @if (!$attendance->is_validated)
                                                     <input type="checkbox"
                                                         name="attendances[{{ $attendance->id }}][is_validated]"
