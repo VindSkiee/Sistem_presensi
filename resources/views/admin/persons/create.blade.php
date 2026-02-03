@@ -44,7 +44,7 @@
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     <input type="email" name="email" id="email" value="{{ old('email') }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+                        class="shadow-sm appearance-none border-2 border-slate-300 rounded-lg w-full py-2.5 px-4 text-slate-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all
                         {{ $errors->has('email') ? 'border-red-500' : '' }}">
                     @error('email')
                         <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
@@ -54,7 +54,7 @@
                 <div class="mb-4">
                     <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password Akun</label>
                     <input type="password" name="password" id="password" required
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+                        class="shadow-sm appearance-none border-2 border-slate-300 rounded-lg w-full py-2.5 px-4 text-slate-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all
                         {{ $errors->has('password') ? 'border-red-500' : '' }}">
                     @error('password')
                         <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
@@ -64,7 +64,7 @@
                 <div class="mb-4">
                     <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Telepon</label>
                     <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+                        class="shadow-sm appearance-none border-2 border-slate-300 rounded-lg w-full py-2.5 px-4 text-slate-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all
                         {{ $errors->has('phone') ? 'border-red-500' : '' }}">
                     @error('phone')
                         <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>

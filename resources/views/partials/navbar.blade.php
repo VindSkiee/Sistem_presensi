@@ -1,29 +1,24 @@
-<!-- Enhanced Navbar with Modern Formal Design -->
 <nav class="sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 shadow-xl border-b border-slate-700">
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
-            <!-- Logo di ujung kiri -->
+    
             <div class="flex items-center">
                 <div class="flex-shrink-0 flex items-center space-x-3">
-                    <!-- Logo/Icon -->
-                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
+         
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg bg-white">
+                            <img src="{{ asset('favicon.ico') }}" alt="Logo" class="w-10 h-10 rounded-lg" />
+                        </div>
                     <div class="hidden sm:block">
                         <span class="text-2xl font-bold bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">
-                            Presensi Sistem
+                            Sistem Absensi Marina
                         </span>
                         <div class="text-xs text-slate-400 font-medium">Platform Manajemen</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Profil dan Logout di ujung kanan -->
             <div class="flex items-center space-x-3 ml-auto">
                 @auth
-                    <!-- User Info -->
                     <div class="hidden md:flex items-center space-x-3 bg-slate-800/50 rounded-2xl px-4 py-2 border border-slate-700/50">
                         <div class="w-9 h-9 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
                             <span class="text-white text-sm font-semibold">
@@ -35,8 +30,6 @@
                             <div class="text-slate-400 text-xs">User Account</div>
                         </div>
                     </div>
-                    
-                    <!-- Logout Button -->
                     <form method="POST" action="{{ route('logout') }}" id="logout-form">
                         @csrf
                         <button type="button" 

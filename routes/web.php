@@ -8,7 +8,11 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\QrController;
 
+
+// QR Code Route
+Route::get('/qr', [QrController::class, 'show'])->name('qr.show');
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -59,3 +63,4 @@ Route::middleware(['auth', 'super_admin'])->prefix('super-admin')->group(functio
 // Redirect root to appropriate dashboard
 Route::redirect('/', '/login');
 Route::redirect('/dashboard', '/user/dashboard');
+

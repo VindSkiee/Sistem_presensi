@@ -87,12 +87,12 @@ class UserController extends Controller
 
         // Validasi
         $request->validate([
-            'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'photo' => 'required|image|mimes:jpg,jpeg,png|max:5120',
         ], [
             'photo.required' => 'Foto wajib diupload.',
             'photo.image' => 'File harus berupa gambar.',
             'photo.mimes' => 'Foto harus berformat jpg, jpeg, atau png.',
-            'photo.max' => 'Ukuran foto maksimal 2MB.',
+            'photo.max' => 'Ukuran foto maksimal 5 MB.',
         ]);
 
         // Simpan foto ke storage
