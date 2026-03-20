@@ -1,4 +1,4 @@
-# Sistem Presensi
+# Attendance & Scheduler System
 
 A web-based attendance management system built with Laravel 12. Designed to digitalize and streamline the process of recording, managing, and validating employee or staff attendance using QR codes and a role-based access control system.
 
